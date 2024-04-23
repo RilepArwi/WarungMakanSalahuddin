@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warung Makan Salahuddin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Warung Makan Salahuddin</h1>
+        <div class="warning">
+            <strong>Perhatian:</strong> Harga menu bisa berubah tanpa pemberitahuan sebelumnya.
+        </div>
+        <h2>Waktu Buka dan Tutup:</h2>
+<p>Senin - Jumat: 08.00 - 20.00</p>
+<p>Sabtu - Minggu: 10.00 - 22.00</p>
+
+        <h2>Menu Makanan:</h2>
+        <ul>
+            <li>Nasi Goreng - Rp 15.000</li>
+            <li>Mie Goreng - Rp 12.000</li>
+            <li>Ayam Goreng - Rp 20.000</li>
+            <li>Sate Ayam - Rp 25.000</li>
+            <li>Gado-gado - Rp 15.000</li>
+        </ul>
+        <h2>Menu Minuman:</h2>
+        <ul>
+            <li>Es Teh Manis - Rp 5.000</li>
+            <li>Es Jeruk - Rp 7.000</li>
+            <li>Jus Alpukat - Rp 10.000</li>
+            <li>Kopi Hitam - Rp 8.000</li>
+            <li>Air Mineral - Rp 3.000</li>
+        </ul>
+        <h2>Pesan Sekarang:</h2>
+        <form action="submit_order.php" method="POST">
+            <label for="nama">Nama:</label><br>
+            <input type="text" id="nama" name="nama" required><br>
+            <label for="pesanan">Pesanan:</label><br>
+            <div id="pesanan-container">
+                <div class="pesanan-item">
+                    <select name="menu[]" required>
+                        <option value="">Pilih Menu</option>
+                        <optgroup label="Makanan">
+                            <option value="Nasi Goreng">Nasi Goreng</option>
+                            <option value="Mie Goreng">Mie Goreng</option>
+                            <option value="Ayam Goreng">Ayam Goreng</option>
+                            <option value="Sate Ayam">Sate Ayam</option>
+                            <option value="Gado-gado">Gado-gado</option>
+                        </optgroup>
+                        <optgroup label="Minuman">
+                            <option value="Es Teh Manis">Es Teh Manis</option>
+                            <option value="Es Jeruk">Es Jeruk</option>
+                            <option value="Jus Alpukat">Jus Alpukat</option>
+                            <option value="Kopi Hitam">Kopi Hitam</option>
+                            <option value="Air Mineral">Air Mineral</option>
+                        </optgroup>
+                    </select>
+                    <input type="number" name="jumlah[]" min="1" required>
+                </div>
+            </div>
+            <button type="button" id="tambah-pesanan">Tambah Pesanan</button><br>
+            <label for="metode_pembayaran">Metode Pembayaran:</label><br>
+            <select id="metode_pembayaran" name="metode_pembayaran" required>
+                <option value="">Pilih Metode Pembayaran</option>
+                <option value="Tunai">Tunai</option>
+                <option value="Kartu Kredit">Kartu Kredit</option>
+                <option value="Transfer Bank">Transfer Bank</option>
+                <option value="E-Wallet">E-Wallet</option>
+            </select><br>
+            <input type="submit" value="Pesan">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("tambah-pesanan").addEventListener("click", function() {
+            var pesananContainer = document.getElementById("pesanan-container");
+            var pesananItem = document.createElement("div");
+            pesananItem.classList.add("pesanan-item");
+            pesananItem.innerHTML = `
+                <select name="menu[]" required>
+                    <option value="">Pilih Menu</option>
+                    <optgroup label="Makanan">
+                        <option value="Nasi Goreng">Nasi Goreng</option>
+                        <option value="Mie Goreng">Mie Goreng</option>
+                        <option value="Ayam Goreng">Ayam Goreng</option>
+                        <option value="Sate Ayam">Sate Ayam</option>
+                        <option value="Gado-gado">Gado-gado</option>
+                    </optgroup>
+                    <optgroup label="Minuman">
+                        <option value="Es Teh Manis">Es Teh Manis</option>
+                        <option value="Es Jeruk">Es Jeruk</option>
+                        <option value="Jus Alpukat">Jus Alpukat</option>
+                        <option value="Kopi Hitam">Kopi Hitam</option>
+                        <option value="Air Mineral">Air Mineral</option>
+                    </optgroup>
+                </select>
+                <input type="number" name="jumlah[]" min="1" required>`;
+            pesananContainer.appendChild(pesananItem);
+        });
+    </script>
+</body>
+</html>
